@@ -1,0 +1,25 @@
+{
+  "name": "Copy History",
+  "version": "1.0.0",
+  "description": "A Chrome extension to view your copy history and copy previous entries.",
+  "permissions":["storage", "tabs"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js", "copyUtil.js"],
+      "type": "module"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/copy.png",
+      "48": "icons/copy.png",
+      "128": "icons/copy.png"
+    }
+  },
+  "manifest_version": 3
+}
