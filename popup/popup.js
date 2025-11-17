@@ -41,6 +41,9 @@
 
       const textToolTip = document.createElement("div");
       textToolTip.className = "copy-tooltip";
+      if (index >= 6) {
+        textToolTip.classList.add("copy-tooltip-blv");
+      }
       textNode.appendChild(textToolTip);
       textToolTip.innerText = item;
       console.log(item);
@@ -65,8 +68,22 @@
     loadCopyHistory(copyHistory);
   };
 
+  const initDarkMode = async () => {
+    const isDarkMode = (await fetchSettings())[DARK_MODE_KEY] === DARK;
+    if (isDarkMode) {
+      document.body.classList.add("darkmode");
+    }
+
+    const darkModeButton = document.querySelector(".action-btn-darkmode");
+    darkModeButton.addEventListener("click", async () => {
+      document.body.classList.toggle("darkmode");
+      await updateSettings(DARK_MODE_KEY, (await fetchSettings())[DARK_MODE_KEY] === DARK ? LIGHT : DARK);
+    });
+  };
+
   document.addEventListener("DOMContentLoaded", async () => {
     await reloadPopup();
+    await initDarkMode();
   });
 
   chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {

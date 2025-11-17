@@ -2,16 +2,25 @@ body {
   width: 300px;
   max-width: 400px;
   font-family: Verdana, sans-serif;
+  background-color: rgb(255, 255, 255);
+}
+
+.copy-history-header {
+  display: flex;
 }
 
 #copy-history-display {
-  max-height: 400px;
-  overflow: visible;
+  min-height: 300px;
+  overflow: scroll;
 }
 
 .copy-icon {
   cursor: pointer;
   flex: 0 0 10%;
+}
+
+.copy-icon:hover {
+  opacity: 0.5;
 }
 
 .copy-text-node {
@@ -40,6 +49,12 @@ body {
   max-height: 100px;
   max-width: 100%;
   overflow: scroll;
+  left: 20px;
+  right: 0px;
+}
+
+.copy-tooltip-blv {
+  bottom: 100%;
 }
 
 .copy-text-node:hover .copy-tooltip {
@@ -53,6 +68,10 @@ body {
   flex: 0 0 10%;
 }
 
+.copy-delete-button:hover {
+  opacity: 0.5;
+}
+
 .copy-item {
   padding: 8px;
   border-bottom: 1px solid #ccc;
@@ -62,4 +81,22 @@ body {
 
 #copy-history-display > div:nth-child(odd) {
   background-color: #e0dada;
+}
+
+.action-btn {
+  cursor: pointer;
+}
+
+.action-btn-darkmode {
+  cursor: pointer;
+}
+
+.darkmode {
+  background-color: black;
+  color: white;
+  fill: white;
+}
+
+.darkmode #copy-history-display > div:nth-child(odd) {
+  background-color: rgb(48, 48, 48);
 }

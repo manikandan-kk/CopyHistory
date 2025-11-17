@@ -1,4 +1,3 @@
-const COPY_HISTORY_LIMIT = 10;
 (() => {
   document.addEventListener('copy', async(event) => {
     const selection = document.getSelection();
