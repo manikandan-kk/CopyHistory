@@ -36,13 +36,14 @@
 
       const visibleTextNode = document.createElement("div");
       visibleTextNode.className = "copy-text";
-      visibleTextNode.innerText = item;
+      visibleTextNode.textContent = item;
       textNode.appendChild(visibleTextNode);
 
       const textToolTip = document.createElement("div");
       textToolTip.className = "copy-tooltip";
       textNode.appendChild(textToolTip);
       textToolTip.innerText = item;
+      console.log(item);
 
       copyItem.appendChild(textNode);
 
