@@ -12,6 +12,7 @@ body {
 #copy-history-display {
   min-height: 300px;
   overflow: scroll;
+  border-radius: 10px;
 }
 
 .copy-icon {
@@ -83,8 +84,17 @@ body {
   background-color: #e0dada;
 }
 
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .action-btn {
   cursor: pointer;
+}
+
+.action-btn:hover {
+  opacity: 0.5;
 }
 
 .action-btn-darkmode {

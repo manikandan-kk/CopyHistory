@@ -70,14 +70,27 @@
 
   const initDarkMode = async () => {
     const isDarkMode = (await fetchSettings())[DARK_MODE_KEY] === DARK;
+    const darkModeButton = document.querySelector(".action-btn-darkmode");
+    const switchDarkModeIcon = (isDarkMode) => {
+      if (isDarkMode) {
+        darkModeButton.classList.add("fas"); darkModeButton.classList.add("fa-moon");
+        darkModeButton.classList.remove("far"); darkModeButton.classList.remove("fa-lightbulb");
+      } else {
+        darkModeButton.classList.remove("fas"); darkModeButton.classList.remove("fa-moon");
+        darkModeButton.classList.add("far"); darkModeButton.classList.add("fa-lightbulb");
+      }
+    };
+
     if (isDarkMode) {
       document.body.classList.add("darkmode");
     }
-
-    const darkModeButton = document.querySelector(".action-btn-darkmode");
+    switchDarkModeIcon(isDarkMode);
+    
     darkModeButton.addEventListener("click", async () => {
       document.body.classList.toggle("darkmode");
-      await updateSettings(DARK_MODE_KEY, (await fetchSettings())[DARK_MODE_KEY] === DARK ? LIGHT : DARK);
+      const isDarkMode = (await fetchSettings())[DARK_MODE_KEY] === DARK;
+      switchDarkModeIcon(!isDarkMode);
+      await updateSettings(DARK_MODE_KEY, isDarkMode ? LIGHT : DARK);
     });
   };
 
